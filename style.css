@@ -102,3 +102,10 @@
     margin: 0px;
 }
 
+@media (max-width:840px) {
+    .main{
+        display: flex;
+        flex-direction: column;
+    }
+    
+}
