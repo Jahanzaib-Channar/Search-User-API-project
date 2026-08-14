@@ -1,6 +1,71 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+.pic-style {
+    display: flex;
+    background-color: #206BE5;
+    align-items: center;
+}
+
+.pic-style img {
+    height: 120px;
+    width: 120px;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.about h5 {
+    color: #206BE5;
+    font-weight: 900;
+}
+
+.about .badge {
+    color: #206BE5;
+    font-size: 10px;
+    background-color: #D2E2FF;
+    padding: 9px 15px;
+}
+
+.card-style {
+    margin: 20px auto;
+}
+
+
+.btns {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.btns .btn-style {
+    font-size: 14px;
+    padding: inherit 30px;
+    width: 8rem;
+    border-radius: 20px;
+}
+
+.find {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+
+}
+
+.find .social {
+    color: #206BE5;
+    font-size: 20px;
+}
+
+.find .address p {
+    margin: 0px;
+}
