@@ -39,6 +39,44 @@
 
 }
 
+.list-group {
+    height: 500px;
+    overflow: auto;
+}
+
+.lists{
+    width: 100%;
+    display: flex;
+    gap: 20px;
+}
+
+
+.lists .firstName {
+    width: 100%;
+    display: flex;
+    
+    
+}
+
+.lists .lastName {
+    width: 100%;
+}
+
+.lists .firstName li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lists .lastName li{
+    display: flex;
+    justify-content: space-between;
+}
+.copybtn{
+    
+    border: none;
+    
+
+}
 
 /* Card Style  */
 .pic-style {
@@ -109,3 +147,5 @@
     }
     
 }
+
+
