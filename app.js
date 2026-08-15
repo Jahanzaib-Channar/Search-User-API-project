@@ -1,29 +1,18 @@
 
-
-
-
 let ul = document.querySelectorAll("ul")
 let firstli = document.querySelector(".firstName")
 let lastli = document.querySelector(".lastName")
 let Loaduser = document.querySelector(".load")
 let searchbtn = document.querySelector(".search")
-
 let loading = document.querySelector(".loading")
 let copybtn = document.querySelector(".copybtn")
 let card = document.querySelector(".card")
 let Inputs = document.querySelector(".input-group")
 
-
-
-
-
 // Search users 
 
 searchbtn.addEventListener("click", async () => {
     let data = await FirstName()
-
-    // console.log(data)
-
 
     if (data) {
         createCard(data);
@@ -41,8 +30,6 @@ async function FirstName() {
     let lastValue = Inputs.querySelector(".last").value
 
     let data = await Checkapi()
-
-    // console.log(data)
 
     let user = data.find((element) => {
         return (
@@ -87,12 +74,7 @@ async function Checkapi() {
     try {
         const res = await fetch(url);
         const data = await res.json();
-
-
         let test = data.users
-
-
-
         return test;
 
     } catch (error) {
@@ -106,7 +88,6 @@ async function Checkapi() {
 let data = async () => {
 
     let data = await Checkapi();
-
 
     check(data)
 }
@@ -180,6 +161,3 @@ for (const element of ul) {
     })
 
 }
-
-
-
