@@ -1,12 +1,12 @@
-console.log("working")
+
 
 
 let ul = document.querySelectorAll("ul")
 let firstli = document.querySelector(".firstName")
 let lastli = document.querySelector(".lastName")
 let Loaduser = document.querySelector(".load")
-let search = document.querySelector(".search")
-let firstInp = document.querySelector(".firstName")
+let searchbtn = document.querySelector(".search")
+let firstInp = document.querySelector(".first")
 let lastInp = document.querySelector(".last")
 let loading = document.querySelector(".loading")
 let copybtn = document.querySelector(".copybtn")
@@ -16,8 +16,9 @@ let copybtn = document.querySelector(".copybtn")
 
 // Search users 
 
-search.addEventListener("click", async () => {
-    console.log("working")
+searchbtn.addEventListener("click", () => {
+    let firstValue = firstInp.value
+    console.log(firstValue);
 
 })
 
@@ -59,7 +60,7 @@ function check(data) {
     for (const element of data) {
 
         setTimeout(() => {
-            
+
 
             let newli = document.createElement("li")
             let newli2 = document.createElement("li")
@@ -97,18 +98,18 @@ for (const element of ul) {
 
     element.addEventListener("click", function (event) {
 
-    if (event.target.classList.contains("fa-clipboard")) {
+        if (event.target.classList.contains("fa-clipboard")) {
 
-        const button = event.target.parentElement;
-        const text = button.dataset.text;
+            const button = event.target.parentElement;
+            const text = button.dataset.text;
 
-        navigator.clipboard.writeText(text);
+            navigator.clipboard.writeText(text);
+            alert("text Copied")
+            console.log("Copied:", text);
+        }
 
-        console.log("Copied:", text);
-    }
+    })
 
-})
-    
 }
 
 
