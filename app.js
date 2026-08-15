@@ -1,26 +1,82 @@
 
 
 
+
 let ul = document.querySelectorAll("ul")
 let firstli = document.querySelector(".firstName")
 let lastli = document.querySelector(".lastName")
 let Loaduser = document.querySelector(".load")
 let searchbtn = document.querySelector(".search")
-let firstInp = document.querySelector(".first")
-let lastInp = document.querySelector(".last")
+
 let loading = document.querySelector(".loading")
 let copybtn = document.querySelector(".copybtn")
+let card = document.querySelector(".card")
+let Inputs = document.querySelector(".input-group")
+
 
 
 
 
 // Search users 
 
-searchbtn.addEventListener("click", () => {
-    let firstValue = firstInp.value
-    console.log(firstValue);
+searchbtn.addEventListener("click", async () => {
+    let data = await FirstName()
+
+    // console.log(data)
+
+
+    if (data) {
+        createCard(data);
+    } else {
+        Nouser()
+    }
 
 })
+
+
+// Find user
+
+async function FirstName() {
+    let firstValue = Inputs.querySelector(".first").value
+    let lastValue = Inputs.querySelector(".last").value
+
+    let data = await Checkapi()
+
+    // console.log(data)
+
+    let user = data.find((element) => {
+        return (
+
+            element.firstName.toLowerCase() === firstValue.toLowerCase() ||
+            element.lastName.toLowerCase() === lastValue.toLowerCase()
+        );
+
+    })
+    return user
+
+}
+
+
+function createCard(data) {
+    let userName = card.querySelector(".card-title");
+    let userJob = card.querySelector(".job");
+    let userAddress = card.querySelector(".addre");
+    let userimg = card.querySelector(".pic");
+    let cards = card.querySelector(".row")
+    cards.classList.remove("visible")
+
+    userName.innerHTML = `${data.firstName} ${data.lastName}`;
+    userJob.innerHTML = data.company.title;
+    userAddress.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.address.country} , ${data.address.city}`;
+    userimg.src = data.image;
+
+}
+
+function Nouser() {
+    let cards = card.querySelector(".row")
+    cards.classList.add("visible")
+
+}
 
 
 // Api Testing & using 
@@ -32,10 +88,12 @@ async function Checkapi() {
         const res = await fetch(url);
         const data = await res.json();
 
+
         let test = data.users
 
-        check(test);
 
+
+        return test;
 
     } catch (error) {
         console.log(error)
@@ -45,9 +103,20 @@ async function Checkapi() {
 
 // Making List of user Names 
 
+let data = async () => {
+
+    let data = await Checkapi();
+
+
+    check(data)
+}
+
+
+// check(data)
 
 Loaduser.addEventListener("click", async () => {
-    let apiData = await Checkapi()
+
+    data()
     // console.log(apiData)
 })
 
