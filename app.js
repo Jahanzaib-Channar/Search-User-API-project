@@ -27,7 +27,7 @@ searchbtn.addEventListener("click", async () => {
 })
 
 
-// Find user
+// Find user or check user 
 
 async function FirstName() {
     let firstValue = Inputs.querySelector(".first").value
@@ -47,6 +47,7 @@ async function FirstName() {
 
 }
 
+//   Create card and map their field 
 
 async function createCard(data) {
     let userName = card.querySelector(".card-title");
@@ -64,6 +65,10 @@ async function createCard(data) {
     factdata.innerHTML = datas
 
 }
+
+
+//  What happen when users not found 
+
 
 function Nouser() {
 
@@ -117,6 +122,7 @@ Loaduser.addEventListener("click", async () => {
     // console.log(apiData)
 })
 
+// Making New list when laoding data 
 
 function check(data) {
     console.log("loading data")
@@ -159,7 +165,7 @@ function check(data) {
     }
 }
 
-
+// Copy Button 
 for (const element of ul) {
 
     element.addEventListener("click", function (event) {
@@ -189,7 +195,4 @@ async function FactsAPi() {
     let facts = await data.json();
 
     return facts.text
-
-
-
 }
