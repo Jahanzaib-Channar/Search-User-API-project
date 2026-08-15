@@ -8,6 +8,7 @@ let loading = document.querySelector(".loading")
 let copybtn = document.querySelector(".copybtn")
 let card = document.querySelector(".card")
 let Inputs = document.querySelector(".input-group")
+let factdata = document.querySelector(".fact")
 
 // Search users 
 
@@ -16,10 +17,13 @@ searchbtn.addEventListener("click", async () => {
 
     if (data) {
         createCard(data);
+
     } else {
         Nouser()
     }
 
+    Inputs.querySelector(".first").value = "";
+    Inputs.querySelector(".last").value = "";
 })
 
 
@@ -44,25 +48,37 @@ async function FirstName() {
 }
 
 
-function createCard(data) {
+async function createCard(data) {
     let userName = card.querySelector(".card-title");
     let userJob = card.querySelector(".job");
     let userAddress = card.querySelector(".addre");
     let userimg = card.querySelector(".pic");
-    let cards = card.querySelector(".row")
-    cards.classList.remove("visible")
 
     userName.innerHTML = `${data.firstName} ${data.lastName}`;
     userJob.innerHTML = data.company.title;
     userAddress.innerHTML = `<i class="fa-solid fa-location-dot"></i> ${data.address.country} , ${data.address.city}`;
     userimg.src = data.image;
 
+    let datas = await FactsAPi()
+    console.log(datas)
+    factdata.innerHTML = datas
+
 }
 
 function Nouser() {
-    let cards = card.querySelector(".row")
-    cards.classList.add("visible")
 
+    let userName = card.querySelector(".card-title");
+    let userJob = card.querySelector(".job");
+    let userAddress = card.querySelector(".addre");
+    let userimg = card.querySelector(".pic");
+
+
+    userName.innerHTML = `Data not found`;
+    userJob.innerHTML = "Data not found";
+    userAddress.innerHTML = `Data not found`;
+    userimg.src = "";
+    userimg.alt = "Data not found";
+    factdata.innerHTML = "Data not found"
 }
 
 
@@ -159,5 +175,21 @@ for (const element of ul) {
         }
 
     })
+
+}
+
+// Fact Api 
+
+let fact = "https://uselessfacts.jsph.pl/api/v2/facts/random";
+
+
+async function FactsAPi() {
+    let data = await fetch(fact);
+
+    let facts = await data.json();
+
+    return facts.text
+
+
 
 }
